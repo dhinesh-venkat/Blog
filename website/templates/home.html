@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<h1>Feed</h1>
+<ul>
+{% for post in object_list %}
+    <li>
+            <a href="{%url 'detail' post.pk%}">
+            {{ post.title }}</a> - {{ post.author.first_name }} {{post.author.last_name}}
+             <small>
+                {{post.post_date}}
+                <a href="{%url 'update' post.pk%}" class="btn btn-primary">Edit</a>
+                <a href="{%url 'delete' post.pk%}" class="btn btn-danger">Delete</a>
+
+             </small>
+            <br/>
+            {{ post.body }}
+    </li>  
+{%endfor%}
+</ul>
+
+
+{%endblock%}
